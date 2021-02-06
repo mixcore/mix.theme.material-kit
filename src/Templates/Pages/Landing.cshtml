@@ -1,5 +1,8 @@
 <div class="section section-basic">
+    
     <div class="container">
-            @Html.Raw(Model.Content)
+        @await Html.PartialAsync("../Modules/ProductHighlight.cshtml")
+        @await Html.PartialAsync("../Modules/OurTeam.cshtml")
+        <!-- @Html.Raw(Model.Content) -->
     </div>
 </div>
