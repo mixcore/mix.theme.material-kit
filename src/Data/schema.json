@@ -516,6 +516,33 @@
       "postId": null,
       "pageId": 0,
       "isExportData": true
+    },
+    {
+      "id": 10,
+      "specificulture": "en-us",
+      "cultures": null,
+      "name": "subscribe",
+      "image": "mix-app/assets/img/image_placeholder.jpg",
+      "thumbnail": "/mix-app/assets/img/image_placeholder.jpg",
+      "template": "Modules/Subscribe.cshtml",
+      "formTemplate": "Forms/_Blank.cshtml",
+      "edmTemplate": "Edms/_Blank.cshtml",
+      "title": "Subscribe",
+      "description": null,
+      "fields": "[]",
+      "type": 0,
+      "pageSize": null,
+      "createdBy": "admin",
+      "createdDateTime": "2021-02-08T11:30:38.955021",
+      "modifiedBy": null,
+      "lastModified": "2021-02-08T11:30:38.9550194",
+      "priority": 0,
+      "status": 2,
+      "data": [],
+      "postNavs": null,
+      "postId": null,
+      "pageId": 0,
+      "isExportData": true
     }
   ],
   "attributeSets": [
@@ -1421,17 +1448,90 @@
       "name": "sys_additional_field_post",
       "description": null,
       "formTemplate": "Widgets/PostHeroBanner.cshtml",
-      "edmTemplate": "Edms/_Blank.cshtml",
+      "edmTemplate": "Widgets/PostHeroBanner.cshtml",
       "edmSubject": null,
       "edmFrom": null,
       "edmAutoSend": null,
       "createdBy": null,
       "createdDateTime": "2021-02-06T04:05:41.5818613",
       "modifiedBy": "admin",
-      "lastModified": "2021-02-08T08:36:28.4033879",
+      "lastModified": "2021-02-08T11:18:47.3782111",
       "priority": 0,
       "status": 2,
-      "fields": [],
+      "fields": [
+        {
+          "id": 37,
+          "specificulture": null,
+          "attributeSetId": 5,
+          "attributeSetName": "sys_additional_field_post",
+          "configurations": "{\"upload\":{\"arrayAccepts\":[],\"accepts\":\"\",\"width\":null,\"height\":null,\"isCrop\":false}}",
+          "referenceId": null,
+          "regex": null,
+          "isRegex": false,
+          "title": "Banner Img Src",
+          "dataType": 16,
+          "defaultValue": null,
+          "strOptions": "[]",
+          "options": [],
+          "name": "banner_img_src",
+          "isRequire": false,
+          "isEncrypt": false,
+          "isSelect": false,
+          "isUnique": false,
+          "isMultiple": false,
+          "createdBy": null,
+          "createdDateTime": "2021-02-08T08:36:28.4148924",
+          "modifiedBy": null,
+          "lastModified": null,
+          "priority": 1,
+          "status": 2,
+          "fieldConfigurations": {
+            "upload": {
+              "arrayAccepts": [],
+              "accepts": "",
+              "width": null,
+              "height": null,
+              "isCrop": false
+            }
+          }
+        },
+        {
+          "id": 38,
+          "specificulture": null,
+          "attributeSetId": 5,
+          "attributeSetName": "sys_additional_field_post",
+          "configurations": "{\"upload\":{\"arrayAccepts\":[],\"accepts\":\"\",\"width\":null,\"height\":null,\"isCrop\":false}}",
+          "referenceId": null,
+          "regex": null,
+          "isRegex": false,
+          "title": "isHighlighted",
+          "dataType": 18,
+          "defaultValue": null,
+          "strOptions": "[]",
+          "options": [],
+          "name": "is_highlighted",
+          "isRequire": false,
+          "isEncrypt": false,
+          "isSelect": false,
+          "isUnique": false,
+          "isMultiple": false,
+          "createdBy": null,
+          "createdDateTime": "2021-02-08T11:18:47.4258181",
+          "modifiedBy": null,
+          "lastModified": null,
+          "priority": 2,
+          "status": 2,
+          "fieldConfigurations": {
+            "upload": {
+              "arrayAccepts": [],
+              "accepts": "",
+              "width": null,
+              "height": null,
+              "isCrop": false
+            }
+          }
+        }
+      ],
       "isExportData": true
     },
     {
@@ -2595,6 +2695,24 @@
       "isProcessed": false
     },
     {
+      "id": "54f8cb68-baf3-4197-b40d-b54a1325a04d",
+      "specificulture": "en-us",
+      "dataId": "1c4a55bc-7fc9-47ac-9335-0f7d39d75b64",
+      "cultures": null,
+      "parentId": "10",
+      "parentType": 3,
+      "attributeSetId": 4,
+      "attributeSetName": "sys_additional_field_module",
+      "description": null,
+      "CreatedBy": null,
+      "createdDateTime": "2021-02-08T11:30:39.1322056",
+      "modifiedBy": null,
+      "lastModified": null,
+      "priority": 0,
+      "status": 2,
+      "isProcessed": false
+    },
+    {
       "id": "05c474b9-999a-4d4e-8e31-643f832546b1",
       "specificulture": "en-us",
       "dataId": "98edad1c-286e-42a0-88c7-0ef100f92d3f",
@@ -2922,7 +3040,7 @@
       "createdDateTime": "2021-02-08T09:34:35.0948548",
       "modifiedBy": null,
       "lastModified": "2021-02-08T09:34:35.0948556",
-      "priority": 0,
+      "priority": 1,
       "status": 2
     },
     {
@@ -2939,7 +3057,7 @@
       "createdDateTime": "2021-02-08T09:35:09.8808112",
       "modifiedBy": null,
       "lastModified": "2021-02-08T09:35:09.8808119",
-      "priority": 0,
+      "priority": 2,
       "status": 2
     },
     {
@@ -2956,7 +3074,7 @@
       "createdDateTime": "2021-02-08T09:46:38.2224361",
       "modifiedBy": null,
       "lastModified": "2021-02-08T09:46:38.2224376",
-      "priority": 0,
+      "priority": 4,
       "status": 2
     },
     {
@@ -2973,7 +3091,7 @@
       "createdDateTime": "2021-02-08T09:47:50.4262612",
       "modifiedBy": null,
       "lastModified": "2021-02-08T09:47:50.426262",
-      "priority": 0,
+      "priority": 3,
       "status": 2
     }
   ],
@@ -3682,6 +3800,26 @@
       "fields": null
     },
     {
+      "id": "1c4a55bc-7fc9-47ac-9335-0f7d39d75b64",
+      "specificulture": "en-us",
+      "cultures": null,
+      "attributeSetId": 4,
+      "attributeSetName": "sys_additional_field_module",
+      "createdBy": null,
+      "createdDateTime": "2021-02-08T11:30:39.117684",
+      "modifiedBy": null,
+      "lastModified": null,
+      "priority": 10,
+      "status": 2,
+      "obj": {
+        "id": "1c4a55bc-7fc9-47ac-9335-0f7d39d75b64"
+      },
+      "parentId": null,
+      "parentType": 0,
+      "relatedData": [],
+      "fields": null
+    },
+    {
       "id": "143b55d8-dc28-4e55-8cb3-feb72dd5ffcd",
       "specificulture": "en-us",
       "cultures": null,
@@ -3711,11 +3849,12 @@
       "createdBy": "admin",
       "createdDateTime": "2021-02-08T08:38:10.556688",
       "modifiedBy": "admin",
-      "lastModified": "2021-02-08T08:45:12.193545",
+      "lastModified": "2021-02-08T17:56:17.9380215",
       "priority": 2,
       "status": 2,
       "obj": {
-        "id": "4725808f-f1be-4fe7-8737-39e937533c5e"
+        "id": "4725808f-f1be-4fe7-8737-39e937533c5e",
+        "banner_img_src": "/mix-app/assets/img/image_placeholder.jpg"
       },
       "parentId": null,
       "parentType": 0,
@@ -3731,7 +3870,7 @@
       "createdBy": "admin",
       "createdDateTime": "2021-02-08T09:41:46.3112256",
       "modifiedBy": "admin",
-      "lastModified": "2021-02-08T09:42:16.7068895",
+      "lastModified": "2021-02-08T18:19:02.1074879",
       "priority": 3,
       "status": 2,
       "obj": {
@@ -3751,7 +3890,7 @@
       "createdBy": "admin",
       "createdDateTime": "2021-02-08T10:01:55.4098429",
       "modifiedBy": "admin",
-      "lastModified": "2021-02-08T10:02:23.810713",
+      "lastModified": "2021-02-08T11:28:49.5682185",
       "priority": 4,
       "status": 2,
       "obj": {
@@ -3781,6 +3920,29 @@
         "type": "Post",
         "icon": null,
         "description": null
+      },
+      "parentId": null,
+      "parentType": 0,
+      "relatedData": [],
+      "fields": null
+    },
+    {
+      "id": "6ecfb51b-fcbd-402c-af1e-595d542a59c4",
+      "specificulture": "en-us",
+      "cultures": null,
+      "attributeSetId": 8,
+      "attributeSetName": "sys_tag",
+      "createdBy": null,
+      "createdDateTime": "2021-02-08T17:56:14.4072728",
+      "modifiedBy": null,
+      "lastModified": null,
+      "priority": 1,
+      "status": 2,
+      "obj": {
+        "id": "6ecfb51b-fcbd-402c-af1e-595d542a59c4",
+        "title": "intro",
+        "slug": "intro",
+        "type": "Post"
       },
       "parentId": null,
       "parentType": 0,

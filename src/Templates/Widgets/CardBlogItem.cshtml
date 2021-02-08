@@ -1,0 +1,28 @@
+@model MixPosts.ReadMvcViewModel
+<div class="card card-plain card-blog">
+    <div class="row">
+    <div class="col-md-5">
+        <div class="card-header card-header-image">
+        <a href="/post/@Model.Id/@(Model.SeoName).html">
+            <img class="img" src="@Model.ImageUrl">
+        </a>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h6 class="card-category text-info">@Model.ListCategory.FirstOrDefault()</h6>
+        <h3 class="card-title">
+        <a href="/post/@Model.Id/@(Model.SeoName).html">@Model.Title</a>
+        </h3>
+        <p class="card-description">
+        @Model.Excerpt
+        <a href="/post/@Model.Id/@(Model.SeoName).html"> Read More </a>
+        </p>
+        <p class="author"> 
+        by
+        <a href="/post/@Model.Id/@(Model.SeoName).html">
+            <b>@Model.CreatedBy</b>
+        </a>, @Model.CreatedDateTime
+        </p>
+    </div>
+    </div>
+</div>

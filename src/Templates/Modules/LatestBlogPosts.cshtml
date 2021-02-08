@@ -22,9 +22,9 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h6 class="category text-info">@item.SysCategories</h6>
+                  <h6 class="category text-info">@item.ListCategory.FirstOrDefault()</h6>  
                   <h4 class="card-title">
-                    <a href="/post/@item.Id/@(item.SeoName).html">@item.Title</a>
+                    <a href="/post/@item.Id/@(item.SeoName).html">@item.Title</a> 
                   </h4>
                   <p class="card-description">
                     @item.Excerpt<a href="/post/@item.Id/@(item.SeoName).html"> Read More </a>
