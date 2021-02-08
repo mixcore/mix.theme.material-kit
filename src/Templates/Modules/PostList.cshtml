@@ -1,0 +1,118 @@
+@{
+  //MixModules.ReadMvcViewModel mdl = MixCmsHelper.GetModule("latest_blog_posts", ViewBag.culture);  
+  var posts = await MixPosts.ReadMvcViewModel.Repository.GetModelListAsync(
+        "CreatedDateTime",
+        MixHeartEnums.DisplayDirection.Asc,3,0);
+
+}
+
+<!--     *********     BLOGS 3      *********      -->
+<div class="blogs-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <h2 class="title">Latest Blogposts 3</h2>
+        <br>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card-header card-header-image">
+                <img class="img img-raised" src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/card-blog4.jpg">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h6 class="card-category text-info">Enterprise</h6>
+              <h3 class="card-title">
+                <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
+              </h3>
+              <p class="card-description">
+                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses. Yet its own business model disruption is only part of the story — and…
+                <a href="#pablo"> Read More </a>
+              </p>
+              <p class="author">
+                by
+                <a href="#pablo">
+                  <b>Mike Butcher</b>
+                </a>, 2 days ago
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card-header card-header-image">
+                <a href="#pablo">
+                  <img class="img img-raised" src="https://demos.creative-tim.com/material-kit-pro/assets/img/office2.jpg">
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h6 class="card-category text-danger">
+                <i class="material-icons">trending_up</i> Trending
+              </h6>
+              <h3 class="card-title">
+                <a href="#pablo">6 insights into the French Fashion landscape</a>
+              </h3>
+              <p class="card-description">
+                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses. Yet its own business model disruption is only part of the story — and…
+                <a href="#pablo"> Read More </a>
+              </p>
+              <p class="author">
+                by
+                <a href="#pablo">
+                  <b>Mike Butcher</b>
+                </a>, 2 days ago
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card-header card-header-image">
+                <a href="#pablo">
+                  <img class="img img-raised" src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog8.jpg">
+                </a>
+                <div class="colored-shadow" style="background-image: url('https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog8.jpg')"></div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h6 class="card-category text-success">
+                Startups
+              </h6>
+              <h3 class="card-title">
+                <a href="#pablo">Lyft launching cross-platform service this week</a>
+              </h3>
+              <p class="card-description">
+                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses. Yet its own business model disruption is only part of the story — and…
+                <a href="#pablo"> Read More </a>
+              </p>
+              <p class="author">
+                by
+                <a href="#pablo">
+                  <b>Megan Rose</b>
+                </a>, 2 days ago
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<br/>
+<br/>
+<nav aria-label="Page navigation example my-5">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="javascript:;" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="javascript:;">Next</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,33 @@
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.PageClass = " profile-page ";
+}
+
+@await Html.PartialAsync("../Modules/MainNavigation.cshtml")
+@await Html.PartialAsync("../Widgets/PostHeroBanner.cshtml")
+
+<div class="main main-raised">
+  <div class="section section-basic">
+      <div class="container">
+          @Html.Raw(Model.Content)
+      </div>
+  </div>
+</div>
+
+@await Html.PartialAsync("../Modules/LatestBlogPosts.cshtml")
+@await Html.PartialAsync("../Modules/Footer.cshtml")
+
+@section Schema {
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "NewsArticle",
+      "headline": "@Model.Title",
+      "image": [
+        "@Model.ImageUrl"
+       ],
+      "datePublished": "@Model.PublishedDateTime",
+      "dateModified": "@Model.LastModified"
+    }
+    </script>
+}

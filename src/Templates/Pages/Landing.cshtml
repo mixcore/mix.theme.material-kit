@@ -1,8 +1,37 @@
-<div class="section section-basic">
-    
-    <div class="container">
-        @await Html.PartialAsync("../Modules/ProductHighlight.cshtml")
-        @await Html.PartialAsync("../Modules/OurTeam.cshtml")
-        <!-- @Html.Raw(Model.Content) -->
+@model MixPages.ReadMvcViewModel
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.PageClass = " landing-page ";
+    string assetFolder = MixCmsHelper.GetAssetFolder(ViewBag.culture); 
+    string templateFolder = MixCmsHelper.GetTemplateFolder(ViewBag.culture);
+    var highlighMdl = Model.GetModule("product_highlight");
+    var ourTeamMdl = Model.GetModule("our_team");
+    var contactUsMdl = Model.GetModule("work_with_us");
+    var latestBlogPost = Model.GetModule("latest_blog_posts");
+
+}
+
+@await Html.PartialAsync("../Modules/MainNavigation.cshtml")
+@await Html.PartialAsync("../Widgets/PageHeroBanner.cshtml")
+
+  
+<div class="main main-raised">
+    <div class="section section-basic">
+        <div class="container">
+            @if(highlighMdl != null){
+                <partial name="@highlighMdl.TemplatePath" model="highlighMdl"/>
+            }
+            @if(ourTeamMdl != null){
+                <partial name="@ourTeamMdl.TemplatePath" model="ourTeamMdl"/>
+            }
+            @if(contactUsMdl != null){
+                <partial name="@contactUsMdl.TemplatePath" model="contactUsMdl"/>
+            }
+            <!-- @Html.Raw(Model.Content) -->
+        </div>
     </div>
 </div>
+
+
+<partial name="../Modules/LatestBlogPosts.cshtml" model="latestBlogPost"/>
+@await Html.PartialAsync("../Modules/Footer.cshtml")

@@ -1,0 +1,21 @@
+@{ 
+  string h1Text = Model.Property<string>("banner_h1_text");
+  string description = Model.Property<string>("banner_description");
+  string bgUrl = Model.Property<string>("banner_img_src");
+  string ctaText = Model.Property<string>("banner_cta_text"); 
+  string ctaUrl = Model.Property<string>("banner_cta_url"); 
+}
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('@bgUrl')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="title">@h1Text</h1>
+          <h4>@description</h4>
+          <br>
+          <a href="@ctaUrl" target="_blank" class="btn btn-danger btn-raised btn-lg">
+            <i class="@(Model.Property<string>("url_icon"))"></i> @ctaText 
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

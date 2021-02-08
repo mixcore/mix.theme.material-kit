@@ -7,33 +7,19 @@
     </div>
     <div class="features">
         <div class="row">
-        <div class="col-md-4">
-            <div class="info">
-            <div class="icon icon-info">
-                <i class="material-icons">chat</i>
+        @foreach(var item in Model.Data.Items){
+            <!-- <p>@item.Property("address")</p> -->
+            
+            <div class="col-md-4">
+                <div class="info">
+                <div class="icon @item.Property("icon_color")">
+                    <i class="material-icons">@item.Property("material_icons")</i>
+                </div>
+                <h4 class="info-title">@item.Property("title")</h4>
+                <p>@item.Property("description")</p>
+                </div>
             </div>
-            <h4 class="info-title">Free Chat</h4>
-            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="info">
-            <div class="icon icon-success">
-                <i class="material-icons">verified_user</i>
-            </div>
-            <h4 class="info-title">Verified Users</h4>
-            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="info">
-            <div class="icon icon-danger">
-                <i class="material-icons">fingerprint</i>
-            </div>
-            <h4 class="info-title">Fingerprint</h4>
-            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-            </div>
-        </div>
+        }
         </div>
     </div>
 </div>
