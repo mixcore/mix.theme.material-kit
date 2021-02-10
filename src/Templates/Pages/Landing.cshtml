@@ -1,7 +1,5 @@
 @model MixPages.ReadMvcViewModel
 @{
-    ViewBag.Title = Model.Title;
-    ViewBag.PageClass = " landing-page ";
     string assetFolder = MixCmsHelper.GetAssetFolder(ViewBag.culture); 
     string templateFolder = MixCmsHelper.GetTemplateFolder(ViewBag.culture);
     var highlighMdl = Model.GetModule("product_highlight");
@@ -11,9 +9,8 @@
 
 }
 
-@await Html.PartialAsync("../Modules/MainNavigation.cshtml")
-@await Html.PartialAsync("../Widgets/PageHeroBanner.cshtml")
-
+<partial name="../Modules/MainNavigation.cshtml"/>
+<partial name="../Widgets/PageHeroBanner.cshtml"/>
   
 <div class="main main-raised">
     <div class="section section-basic">
@@ -32,6 +29,5 @@
     </div>
 </div>
 
-
 <partial name="../Modules/LatestBlogPosts.cshtml" model="latestBlogPost"/>
-@await Html.PartialAsync("../Modules/Footer.cshtml")
+<partial name="../Modules/Footer.cshtml"/>

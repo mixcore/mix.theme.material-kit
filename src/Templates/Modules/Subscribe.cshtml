@@ -14,7 +14,7 @@
         <div class="col-md-6">
         <div class="card card-plain card-form-horizontal">
             <div class="card-body">
-            <form method="" action="">
+            <form id="subscribeForm">
                 <div class="row">
                 <div class="col-md-8">
                     <div class="input-group">
@@ -23,11 +23,11 @@
                         <i class="material-icons">mail</i>
                         </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Your Email...">
+                    <input name="subscribedEmail" type="text" class="form-control" placeholder="Your Email...">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary btn-round btn-block">Subscribe</button>
+                    <button type="submit" class="btn btn-primary btn-round btn-block">Subscribe</button>
                 </div>
                 </div>
             </form>
@@ -37,3 +37,95 @@
     </div>
     </div>
 </div>
+
+<script>
+// Attach a submit handler to the form
+$( "#subscribeForm" ).submit(function( event ) {
+
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    email = $form.find( "input[name='subscribedEmail']" ).val(),
+
+    url = "/api/v1/rest/@ViewBag.culture/attribute-set-data/client"; // https://api-docs.mixcore.org/api/Mix.Cms.Api.RestFul.Controllers.v1.ApiAttributeSetDataController.html
+
+    // data = JSON.stringify({ 
+    //     attributeSetId: 10,
+    //     attributeSetName: "subscribe", 
+    //     obj:{subscribed_email:email}
+    // });
+
+    data = JSON.stringify({
+  "id": null,
+  "specificulture": "@ViewBag.culture",
+  "cultures": null,
+  "attributeSetId": "10",
+  "attributeSetName": "subscribe",
+  "createdBy": null,
+  "createdDateTime": "0001-01-01T00:00:00",
+  "modifiedBy": null,
+  "lastModified": null,
+  "priority": 0,
+  "status": "Published",
+  "detailsUrl": null,
+  "obj": {
+    "id": null,
+    "subscribed_email": email
+  },
+  "relatedData": [],
+  "fields": [
+    {
+      "id": 27,
+      "specificulture": null,
+      "attributeSetId": 10,
+      "attributeSetName": "subscribe",
+      "configurations": "{\"upload\":{\"arrayAccepts\":[],\"accepts\":\"\",\"width\":null,\"height\":null,\"isCrop\":false}}",
+      "referenceId": null,
+      "regex": null,
+      "isRegex": false,
+      "title": "Subscribed Email",
+      "dataType": "EmailAddress",
+      "defaultValue": null,
+      "strOptions": "[]",
+      "options": [],
+      "name": "subscribed_email",
+      "isRequire": true,
+      "isEncrypt": false,
+      "isSelect": false,
+      "isUnique": true,
+      "isMultiple": false,
+      "createdBy": null,
+      "createdDateTime": "2021-02-06T17:25:28.6122517",
+      "modifiedBy": null,
+      "lastModified": null,
+      "priority": 1,
+      "status": "Published",
+      "fieldConfigurations": {
+        "upload": {
+          "arrayAccepts": [],
+          "accepts": "",
+          "width": null,
+          "height": null,
+          "isCrop": false
+        }
+      }
+    }
+  ],
+  "subscribed_email": null
+});
+
+    $.ajax({
+        'type': 'POST',
+        'url': url,
+        'contentType': 'application/json',
+        'data': data,
+        'dataType': 'json',
+        'success': function() {
+            alert( "success!" );
+        }
+    });
+ 
+});
+</script>

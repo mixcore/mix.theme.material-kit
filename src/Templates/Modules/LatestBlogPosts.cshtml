@@ -27,7 +27,8 @@
                     <a href="/post/@item.Id/@(item.SeoName).html">@item.Title</a> 
                   </h4>
                   <p class="card-description">
-                    @item.Excerpt<a href="/post/@item.Id/@(item.SeoName).html"> Read More </a>
+                    @(item.Excerpt.Length > 160 ? item.Excerpt.Substring(0,160) + "..." : item.Excerpt)
+                    <a href="/post/@item.Id/@(item.SeoName).html"> Read More </a>
                   </p>
                 </div>
               </div>
