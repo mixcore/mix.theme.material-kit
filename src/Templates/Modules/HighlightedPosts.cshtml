@@ -1,10 +1,25 @@
 @{
   //MixModules.ReadMvcViewModel mdl = MixCmsHelper.GetModule("latest_blog_posts", ViewBag.culture);  
+  // https://api-docs.mixcore.org/api/Mix.Domain.Data.Repository.ViewRepositoryBase-3.html
+  //GetModelListByAsync
   var posts = await MixPosts.ReadMvcViewModel.Repository.GetModelListAsync(
         "CreatedDateTime",
-        MixHeartEnums.DisplayDirection.Asc,2,0);
+        MixHeartEnums.DisplayDirection.Desc,2,0);
 
+  string culture = ViewBag.culture;
+        
+  var posts2 = await MixPosts.ReadMvcViewModel.Repository.GetModelListByAsync(
+        //m => m.AttributeData.Data.Obj.is_highlighted == true,
+        (m => m.Specificulture == culture),// && m.attributeData != null,
+        //m => m.AttributeData.,
+        "CreatedDateTime",
+        MixHeartEnums.DisplayDirection.Desc,2,0);
+//posts2.Data.Items[0].AttributeData
 }
+
+<script>
+    console.log('HighlightedPosts Model', @Json.Serialize(posts2))
+</script>
 
         <!--     *********     BLOGS 1      *********      -->
         <div class="blogs-1" id="blogs-1">

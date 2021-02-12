@@ -1,27 +1,62 @@
+@using System.Text.RegularExpressions
+
 @{
-    var detailsUrl = (string)this.ViewData["DetailsUrl"];
+    string BuildUrl(string key, string value)
+    {
+        var builder = new System.UriBuilder("https://" + Context.Request.Host + Context.Request.Path);
+        var query = System.Web.HttpUtility.ParseQueryString(Context.Request.QueryString.ToString());
+        query[key] = value;
+        builder.Query = query.ToString();
+        return builder.ToString();
+    }
 }
-@if (Model.TotalPage > 1)
+<script>
+    console.log('paging Model', @Json.Serialize(Model))
+</script>
+
+@if (Model != null && Model.TotalPage > 0)
 {
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        @if (Model.PageIndex > 0)
+<nav aria-label="Page navigation example my-5">
+  <ul class="pagination justify-content-center">
+    @if (Model.Page > 1)
+    {
+    <li class="page-item">
+      <a class="page-link" href="@BuildUrl("page", (Model.Page - 1).ToString())" tabindex="-1">Previous</a>
+    </li>
+    }
+    else
+    {
+    <li class="page-item disabled">
+      <a class="page-link" href="@BuildUrl("page", (Model.Page - 1).ToString())" tabindex="-1">Previous</a>
+    </li>
+    }
+    @for (int page = Model.Page - 2; page <= Model.Page + 2; page++)
+    {
+        if (page > 0 && page <= Model.TotalPage)
         {
-        <li class="page-item">
-            <a class="page-link" href="@detailsUrl/?page=@(Model.Page - 1)" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
+            string cssClass = "";
+            string url = BuildUrl("page", page.ToString());
+            if (page == Model.Page)
+            {
+                cssClass = "active";
+                url = "javascript:void(0);";
+            }
+            <li class="page-item @cssClass"><a class="page-link" href="@url">@Html.Raw(page)</a></li>
         }
-        @for (int i = 0; i < Model.TotalPage; i++)
-        {
-            string cl = i == Model.PageIndex ? "active" : string.Empty;
-            <li class="page-item @cl"><a class="page-link" href="@detailsUrl/?page=@(i + 1)">@(i + 1)</a></li>
-        }
-        @if (Model.PageIndex < Model.TotalPage - 1)
-        {
-        <li class="page-item">
-        <a class="page-link" href="@detailsUrl/?page=@(Model.Page + 1)">Next</a>
-        </li>
-        }
-    </ul>
+    }
+    
+    @if (Model.Page < Model.TotalPage - 1)
+    {
+    <li class="page-item">
+      <a class="page-link" href="@BuildUrl("page", (Model.Page + 1).ToString())">Next</a>
+    </li>
+    }
+    else
+    { 
+    <li class="page-item disabled">
+      <a class="page-link" href="@BuildUrl("page", (Model.Page + 1).ToString())">Next</a>
+    </li>
+    }
+  </ul>
 </nav>
 }

@@ -2,7 +2,7 @@
   //MixModules.ReadMvcViewModel mdl = MixCmsHelper.GetModule("latest_blog_posts", ViewBag.culture);  
   var posts = await MixPosts.ReadMvcViewModel.Repository.GetModelListAsync(
         "CreatedDateTime",
-        MixHeartEnums.DisplayDirection.Asc,3,0);
+        MixHeartEnums.DisplayDirection.Desc,3,0);
 
 }
 <div class="section">
