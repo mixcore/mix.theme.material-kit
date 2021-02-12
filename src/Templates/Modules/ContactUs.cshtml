@@ -33,3 +33,49 @@
         </div>
     </div>
 </div>
+
+<script>
+// Attach a submit handler to the form
+$( "#contactUsForm" ).submit(function( event ) {
+
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    contactUsName = $form.find( "input[name='contactName']" ).val(),
+    contactUsEmail = $form.find( "input[name='contactEmail']" ).val(),
+    contactUsMessage = $form.find( "textarea[name='contactMessage']" ).val(),
+
+    url = "/api/v1/rest/"+document.documentElement.lang+"/attribute-set-data/client"; // https://api-docs.mixcore.org/api/Mix.Cms.Api.RestFul.Controllers.v1.ApiAttributeSetDataController.html
+    
+    data = JSON.stringify({ 
+        "attributeSetName": "contact_us",
+        "obj": {
+            "id": null,
+            "name": contactUsName,
+            "email": contactUsEmail,
+            "message": contactUsMessage
+        }    
+    });
+
+    $.ajax({
+        'type': 'POST',
+        'url': url,
+        'contentType': 'application/json',
+        'data': data,
+        'dataType': 'json',
+        statusCode: {
+            200: function() {
+                $('#contactUsModal .modal-body').html("Thanks for contact us! We will get back to you asap.");
+                $('#contactUsModal').modal('show');
+            },
+            400: function() {
+                $('#contactUsModal .modal-body').html("There is some error with your submitted form, please try again.");
+                $('#contactUsModal').modal('show');
+            }
+        }
+    });
+ 
+});
+</script>
