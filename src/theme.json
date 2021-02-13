@@ -1,0 +1,19 @@
+{
+    "name": "mix.theme.material-kit",
+    "title": "Mixcore Material Kit",
+    "author": "Mixcore Studio",
+    "author-link": "https://mixcore.studio",
+    "description": "Material Kit is a Free Bootstrap 4 UI Kit with a fresh, new design inspired by Google's material design. You asked for it, so we built it. It's a great pleasure to introduce to you the material concepts in an easy to use and beautiful set of components. Along with the restyling of the Bootstrap elements, you will find three fully-coded example pages, to help you design your next project.",
+    "uri": "https://github.com/mixcore/mix.theme.material-kit",
+    "git_link": "https://github.com/mixcore/mix.theme.material-kit",
+    "screenshots": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-kit/material-kit.gif, https://github.com/creativetimofficial/public-assets/raw/master/material-kit/landing-page.png?raw=true",
+    "version": "0.0.3",
+    "mixcore_version": "1.0.0",
+    "tested_mixcore_version": "1.0.0",
+    "license": "MIT",
+    "license_link": "https://raw.githubusercontent.com/mixcore/mix.theme.material-kit/main/LICENSE",
+    "categories": "Blog, Landing Page, Corporate",
+    "tags": "black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready",
+    "related": "",
+	"contributors_link": "https://github.com/mixcore/mix.theme.material-kit/graphs/contributors"
+}
