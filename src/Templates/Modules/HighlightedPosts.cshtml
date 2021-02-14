@@ -1,32 +1,32 @@
+@using System.Linq
 @{
   //MixModules.ReadMvcViewModel mdl = MixCmsHelper.GetModule("latest_blog_posts", ViewBag.culture);  
   // https://api-docs.mixcore.org/api/Mix.Domain.Data.Repository.ViewRepositoryBase-3.html
   //GetModelListByAsync
   
-  var posts = await MixPosts.ReadMvcViewModel.Repository.GetModelListAsync(
-        "CreatedDateTime",
-        MixHeartEnums.DisplayDirection.Desc,2,0);
+  //var postsx = await MixPosts.ReadMvcViewModel.Repository.GetModelListAsync(
+  //      "CreatedDateTime",
+  //      MixHeartEnums.DisplayDirection.Desc,2,0);
 
-  var hightlightedPosts = await MixPosts.Helper.SearchPostByField<MixPosts.ReadMvcViewModel>("is_highlighted", "true", ViewBag.culture);
-
-    Dictionary<string, object> dic = new Dictionary<string, object>();
-    dic["aa"] = 1;
-    dic["bb"] = 2;
-    JObject obj = JObject.FromObject(dic);
-
+  var posts = await MixPosts.Helper.SearchPostByField<MixPosts.ReadMvcViewModel>(
+    "is_highlighted", "true", 
+    ViewBag.culture,
+    "CreatedDateTime",
+    MixHeartEnums.DisplayDirection.Desc,2,0);
+    
   string culture = ViewBag.culture;
         
-  var posts2 = await MixPosts.ReadMvcViewModel.Repository.GetModelListByAsync(
+  //var posts2 = await MixPosts.ReadMvcViewModel.Repository.GetModelListByAsync(
         //m => m.AttributeData.Data.Obj.is_highlighted == true,
-        (m => m.Specificulture == culture),// && m.attributeData != null,
+  //      (m => m.Specificulture == culture),// && m.attributeData != null,
         //m => m.AttributeData.,
-        "CreatedDateTime",
-        MixHeartEnums.DisplayDirection.Desc,2,0);
+  //      "CreatedDateTime",
+  //      MixHeartEnums.DisplayDirection.Desc,2,0);
 //posts2.Data.Items[0].AttributeData
 }
 
 <script>
-    console.log('HighlightedPosts Model', @Json.Serialize(obj))
+    console.log('HighlightedPosts Model', @Json.Serialize(posts))
 </script>
 
         <!--     *********     BLOGS 1      *********      -->
@@ -37,58 +37,65 @@
                 <h2 class="title">Highlighted Blogposts</h2>
                 <br>
                 @for(int i=0; i < posts.Data.Items.Count ; i++){
+                  var post = posts.Data.Items[i];
                   if(i==0){
                 <div class="card card-plain card-blog">
                   <div class="row">
                     <div class="col-md-5">
                       <div class="card-header card-header-image">
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html">
-                          <img class="img" src="@posts.Data.Items[i].ImageUrl">
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html">
+                          <img class="img" src="@post.ImageUrl">
                         </a>
                       </div>
                     </div>
                     <div class="col-md-7">
-                      <h6 class="card-category text-info">@posts.Data.Items[i].ListCategory.FirstOrDefault()</h6>
+                      <h6 class="card-category text-info">
+                        @foreach(var cat in post.ListCategory){
+                          @cat
+                        }
+                      </h6>
                       <h3 class="card-title">
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html">@posts.Data.Items[i].Title</a>
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html">@post.Title</a>
                       </h3>
                       <p class="card-description">
-                        @posts.Data.Items[i].Excerpt
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html"> Read More </a>
+                        @post.Excerpt
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html"> Read More </a>
                       </p>
                       <p class="author"> 
                         by
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html">
-                          <b>@posts.Data.Items[i].CreatedBy</b>
-                        </a>, @posts.Data.Items[i].CreatedDateTime
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html">
+                          <b>@post.CreatedBy</b>
+                        </a>, @post.CreatedDateTime
                       </p>
                     </div>
                   </div>
                 </div>
-                  }else{
+                  }else if(posts.Data.Items.Count > 1){
                 <div class="card card-plain card-blog">
                   <div class="row">
                     <div class="col-md-7">
                       <h6 class="card-category text-danger"> 
-                        @posts.Data.Items[i].ListCategory.FirstOrDefault() 
+                        @foreach(var cat in post.ListCategory){
+                          @cat
+                        }
                       </h6>
                       <h3 class="card-title">
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html">@posts.Data.Items[i].Title</a>
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html">@post.Title</a>
                       </h3>
                       <p class="card-description">
-                        @posts.Data.Items[i].Excerpt
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html"> Read More </a>
+                        @post.Excerpt
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html"> Read More </a>
                       </p>
                       <p class="author">
                         by
-                        <a href="/post/@posts.Data.Items[i].Id/@(posts.Data.Items[i].SeoName).html">
-                          <b>@posts.Data.Items[i].CreatedBy</b>
-                        </a>, @posts.Data.Items[i].CreatedDateTime
+                        <a href="/post/@post.Id/@(posts.Data.Items[i].SeoName).html">
+                          <b>@post.CreatedBy</b>
+                        </a>, @post.CreatedDateTime
                       </p>
                     </div>
                     <div class="col-md-5">
                       <div class="card-header card-header-image">
-                        <img class="img img-raised" src="@posts.Data.Items[i].ImageUrl">
+                        <img class="img img-raised" src="@post.ImageUrl">
                       </div>
                     </div>
                   </div>
